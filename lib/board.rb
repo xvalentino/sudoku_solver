@@ -1,23 +1,37 @@
-require_relative 'spot'  # => true
+require_relative 'spot'
 
 class Board
-  attr_accessor :state  # => nil
+  attr_accessor :state
+  attr_reader :row1
 
   def initialize
-    blank_board   # => [[#<Spot:0x007fec73884d18 @data="">, #<Spot:0x007fec73884cc8 @data="">, #<Spot:0x007fec73884c78 @data="">, #<Spot:0x007fec73884c28 @data="">, #<Spot:0x007fec73884bd8 @data="">, #<Spot:0x007fec73884b88 @data="">, #<Spot:0x007fec73884b38 @data="">, #<Spot:0x007fec73884ae8 @data="">, #<Spot:0x007fec73884a98 @data="">], [#<Spot:0x007fec73884a20 @data="">, #<Spot:0x007fec738849d0 @data="">, #<Spot:0x007fec73884980 @data="">, #<Spot:0x007fec73884930 @data="">, #<Spot:0x007fec738848e0 @data="">, #<Spot:0x007fec73884890 @data="">, #<Spot:0x007fec73884840 @data="">, #<Spot:0x007fec738847f0 @data="">, #<Spot:0x007fec738847a0 @data="">], [#<Spot:0x007fec73884728 @data="">, #<Spot:0x007fec738846d8 @data="">, #<Spot:0x007fec73884688 @data="">, #<Spot:0x007fec73884638 @data="">, #<Spot:0x007fec738845e8 @data="">, #<Spot:0x007fec73884598 @data="">, #<Spot:0x007fec73884548 @data="">, #<Spot:0x007fec738844f8 @data="">, #<Spot:0x007fec73884480 @data="">], [#<Spot:0x007fec738844...
+    blank_board
   end
 
   def blank_board
-    make_81_spot_state  # => [[#<Spot:0x007fec73884d18 @data="">, #<Spot:0x007fec73884cc8 @data="">, #<Spot:0x007fec73884c78 @data="">, #<Spot:0x007fec73884c28 @data="">, #<Spot:0x007fec73884bd8 @data="">, #<Spot:0x007fec73884b88 @data="">, #<Spot:0x007fec73884b38 @data="">, #<Spot:0x007fec73884ae8 @data="">, #<Spot:0x007fec73884a98 @data="">], [#<Spot:0x007fec73884a20 @data="">, #<Spot:0x007fec738849d0 @data="">, #<Spot:0x007fec73884980 @data="">, #<Spot:0x007fec73884930 @data="">, #<Spot:0x007fec738848e0 @data="">, #<Spot:0x007fec73884890 @data="">, #<Spot:0x007fec73884840 @data="">, #<Spot:0x007fec738847f0 @data="">, #<Spot:0x007fec738847a0 @data="">], [#<Spot:0x007fec73884728 @data="">, #<Spot:0x007fec738846d8 @data="">, #<Spot:0x007fec73884688 @data="">, #<Spot:0x007fec73884638 @data="">, #<Spot:0x007fec738845e8 @data="">, #<Spot:0x007fec73884598 @data="">, #<Spot:0x007fec73884548 @data="">, #<Spot:0x007fec738844f8 @data="">, #<Spot:0x007fec73884480 @data="">], [#<Spot:0x007fec...
+    make_9_9_board
   end
 
-  def make_81_spot_state
-    @state = Array.new(9) {Array.new(9) {Spot.new}}  # => [[#<Spot:0x007fec73884d18 @data="">, #<Spot:0x007fec73884cc8 @data="">, #<Spot:0x007fec73884c78 @data="">, #<Spot:0x007fec73884c28 @data="">, #<Spot:0x007fec73884bd8 @data="">, #<Spot:0x007fec73884b88 @data="">, #<Spot:0x007fec73884b38 @data="">, #<Spot:0x007fec73884ae8 @data="">, #<Spot:0x007fec73884a98 @data="">], [#<Spot:0x007fec73884a20 @data="">, #<Spot:0x007fec738849d0 @data="">, #<Spot:0x007fec73884980 @data="">, #<Spot:0x007fec73884930 @data="">, #<Spot:0x007fec738848e0 @data="">, #<Spot:0x007fec73884890 @data="">, #<Spot:0x007fec73884840 @data="">, #<Spot:0x007fec738847f0 @data="">, #<Spot:0x007fec738847a0 @data="">], [#<Spot:0x007fec73884728 @data="">, #<Spot:0x007fec738846d8 @data="">, #<Spot:0x007fec73884688 @data="">, #<Spot:0x007fec73884638 @data="">, #<Spot:0x007fec738845e8 @data="">, #<Spot:0x007fec73884598 @data="">, #<Spot:0x007fec73884548 @data="">, #<Spot:0x007fec738844f8 @data="">, #<Spot:0x007fec73884480...
+  def make_9_9_board
+    @state = Array.new(9) {Array.new(9) {Spot.new}}
+    name_rows
   end
 
-  def turn_81_to_9x9
+  def intake_row_1(row)
+    row.to_s.chars.each_index do |index|
+    @row1[index].data = 6
+    end
+  end
 
+  def name_rows
+    @row1 = @state[0]
+    @row2 = @state[1]
+    @row3 = @state[2]
+    @row4 = @state[3]
+    @row5 = @state[4]
+    @row6 = @state[5]
+    @row7 = @state[6]
+    @row8 = @state[7]
+    @row9 = @state[8]
   end
 end
-
-Board.new  # => #<Board:0x007fec73884d90 @state=[[#<Spot:0x007fec73884d18 @data="">, #<Spot:0x007fec73884cc8 @data="">, #<Spot:0x007fec73884c78 @data="">, #<Spot:0x007fec73884c28 @data="">, #<Spot:0x007fec73884bd8 @data="">, #<Spot:0x007fec73884b88 @data="">, #<Spot:0x007fec73884b38 @data="">, #<Spot:0x007fec73884ae8 @data="">, #<Spot:0x007fec73884a98 @data="">], [#<Spot:0x007fec73884a20 @data="">, #<Spot:0x007fec738849d0 @data="">, #<Spot:0x007fec73884980 @data="">, #<Spot:0x007fec73884930 @data="">, #<Spot:0x007fec738848e0 @data="">, #<Spot:0x007fec73884890 @data="">, #<Spot:0x007fec73884840 @data="">, #<Spot:0x007fec738847f0 @data="">, #<Spot:0x007fec738847a0 @data="">], [#<Spot:0x007fec73884728 @data="">, #<Spot:0x007fec738846d8 @data="">, #<Spot:0x007fec73884688 @data="">, #<Spot:0x007fec73884638 @data="">, #<Spot:0x007fec738845e8 @data="">, #<Spot:0x007fec73884598 @data="">, #<Spot:0x007fec73884548 @data="">, #<Spot:0x007fec738844f8 @data="">, #<Spot:0x007fec73884480 @data="">...

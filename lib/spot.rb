@@ -4,6 +4,10 @@ class Spot
     @data = ''
   end
 
+  def to_s
+    @data
+  end
+
   def set_data(value)
     if is_valid_one_digit_number?(value)
       @data = value
