@@ -7,4 +7,12 @@ class BoardTest < Minitest::Test
     board = Board.new
     assert board
   end
+
+  def setup
+    board = Board.new
+  end
+
+  def test_board_is_blank_default
+    assert_equal , board.state
+  end
 end
