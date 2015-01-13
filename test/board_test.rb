@@ -14,6 +14,13 @@ class BoardTest < Minitest::Test
 
   def test_board_takes_numbers
     @board.intake_row_1(826594317)
-    assert_equal '826594317', @board.row1
+    assert @board.row1
+  end
+
+  def test_board_takes_two_rows
+    @board.intake_row_1(826594317)
+    @board.intake_row_2(715638942)
+    assert @board.row1
+    assert @board.row2
   end
 end

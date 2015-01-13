@@ -1,8 +1,9 @@
 require_relative 'spot'
+require 'pry'
 
 class Board
   attr_accessor :state
-  attr_reader :row1
+  attr_reader :row1, :row2
 
   def initialize
     blank_board
@@ -18,8 +19,16 @@ class Board
   end
 
   def intake_row_1(row)
-    row.to_s.chars.each_index do |index|
-    @row1[index].data = 6
+    row = row.to_s.chars
+    row.each_index do |index|
+    @row1[index].data = row[index]
+    end
+  end
+
+  def intake_row_2(row)
+    row = row.to_s.chars
+    row.each_index do |index|
+      @row2[index].data = row[index]
     end
   end
 
