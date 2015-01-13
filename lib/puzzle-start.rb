@@ -1,0 +1,2 @@
+class PuzzleStart
+end
