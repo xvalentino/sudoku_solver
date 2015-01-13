@@ -3,7 +3,7 @@ require 'minitest/pride'
 require_relative '../lib/puzzle-start'
 
 class PuzzleStartTest < Minitest::Test
-  def test_board_exists
+  def test_puzzlestart_exists
     puzzle = PuzzleStart.new
     assert puzzle
   end
