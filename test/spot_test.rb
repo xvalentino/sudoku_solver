@@ -7,4 +7,9 @@ class SpotTest < Minitest::Test
     spot = Spot.new
     assert_equal spot, spot
   end
+
+  def test_each_spot_starts_empty
+    spot = Spot.new
+    assert_equal '', spot.data
+  end
 end
