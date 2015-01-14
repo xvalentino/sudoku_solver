@@ -8,10 +8,8 @@ class SpotTest < Minitest::Test
     assert_equal spot, spot
   end
 
-  def test_can_only_be_1_through_9
+  def test_spot_holds_possibilities
     spot = Spot.new
-    other_spot = Spot.new
-    assert_equal '1', spot.set_data("1")
-    assert_equal '', other_spot.set_data("a")
+    assert_equal [1, 2, 3, 4, 5, 6, 7, 8, 9], spot.possibilities
   end
 end
