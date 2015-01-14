@@ -1,7 +1,7 @@
 class Spot
-  attr_accessor :data
+  attr_accessor :data, :possibilities
   def initialize
-    @data = ''
+    @possibilities = (1..9).to_a
   end
 
   def to_s

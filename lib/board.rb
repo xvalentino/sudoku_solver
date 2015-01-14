@@ -3,12 +3,9 @@ require 'pry'
 
 class Board
   attr_accessor :state
-  attr_reader :row1, :row2
 
   def initialize
     blank_board
-    @row1 = row(1)
-    @row2 = row(2)
   end
 
   def blank_board
@@ -20,13 +17,19 @@ class Board
   end
 
   def intake_row(row_number, numbers)
-    numbers = numbers.to_s.chars
-    numbers.each_index do |index|
-      row(row_number)[index].data = numbers[index]
+    numbers = numbers.chars
+    numbers.each_with_index do |number, index|
+      if number != '0'
+      row(row_number)[index] = number.to_i
+      end
     end
   end
 
   def row(num)
     @state[num - 1]
+  end
+
+  def intake_all_rows(number)
+    number.split("\n")
   end
 end

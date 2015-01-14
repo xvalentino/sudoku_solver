@@ -8,11 +8,6 @@ class SpotTest < Minitest::Test
     assert_equal spot, spot
   end
 
-  def test_each_spot_starts_empty
-    spot = Spot.new
-    assert_equal '', spot.data
-  end
-
   def test_can_only_be_1_through_9
     spot = Spot.new
     other_spot = Spot.new
