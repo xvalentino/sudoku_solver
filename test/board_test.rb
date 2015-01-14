@@ -1,6 +1,7 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require_relative '../lib/board'
+require 'pry'
 
 class BoardTest < Minitest::Test
   def setup

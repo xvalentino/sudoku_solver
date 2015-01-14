@@ -1,5 +1,5 @@
 require_relative 'spot'
-require 'pry'
+require_relative 'row'
 
 class Board
   attr_accessor :state
@@ -13,7 +13,7 @@ class Board
   end
 
   def make_9_9_board
-    @state = Array.new(9) {Array.new(9) {Spot.new}}
+    @state = Array.new(9) {Array.new(9) {''}}
   end
 
   def row(num)
@@ -25,8 +25,12 @@ class Board
     intake_each_row(array_of_numbers)
   end
 
+  def solve
+    solve_using_rows
+  end
+
   def solve_using_rows
-    
+    Row.new(row(1)).solve
   end
 
   def split_at_new_lines(text)
@@ -42,8 +46,10 @@ class Board
   def intake_row(row_number, numbers)
     numbers = numbers.chars
     numbers.each_with_index do |number, index|
-      if number != '0'
+      if number.to_i > 0
         row(row_number)[index] = number.to_i
+      else
+        row(row_number)[index] = Spot.new
       end
     end
   end
