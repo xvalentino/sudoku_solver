@@ -22,7 +22,6 @@ class RowTest < Minitest::Test
     puzzle = File.read("./lib/board_1.txt")
     @board.intake(puzzle)
     row = Row.new(@board.row(1))
-    row.find_spots
     row.solve
     assert_equal [8, 2, 6, 5, 9, 4, 3, 1, 7], row.contents
   end

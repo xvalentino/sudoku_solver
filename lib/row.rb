@@ -14,26 +14,27 @@ class Row
     if_one_possibility_solve_it
   end
 
-  def find_spots
-    eliminated = contents.inject[] do |_, element|
-      if element.is_a?(Spot)
-        contents.index(element)
-      end
-    end
-    binding.pry
-  end
-
   def eliminate_possibilities
-    (1..9).each do |index|
-      if contents.include?(index)
-        contents[0].possibilities.delete(index)
+    (1..9).each do |number|
+      if contents.include?(number)
+        contents.each do |element|
+          if element.is_a?(Spot)
+            element.possibilities.delete_at(element.possibilities.index(number))
+          end
+        end
       end
     end
   end
 
   def if_one_possibility_solve_it
-    if contents[0].possibilities.length == 1
-      contents[0] = contents[0].possibilities.first
+    contents.each do |element|
+      if element.is_a?(Spot) && element.possibilities.length == 1
+        contents[contents.index(element)] = element.possibilities.first
+      end
     end
+  end
+
+  def contains_a_spot?
+    contents.any? {|element| element.is_a?(Spot)}
   end
 end
