@@ -57,10 +57,20 @@ class Board
   end
 
   def solution
-    solution = @state.flatten.map(&:to_s).inject('') do |pile, num|
+    @solution = put_board_into_one_string
+    insert_new_line_every_9_numbers
+  end
+
+  def put_board_into_one_string
+    @state = @state.flatten
+    @state = @state.map(&:to_s)
+    @state.inject('') do |pile, num|
       pile + num
     end
-    solution.scan(/.{1,9}/).join("\n") + "\n"
+  end
+
+  def insert_new_line_every_9_numbers
+    @solution.scan(/.{1,9}/).join("\n") + "\n"
   end
 
 end
