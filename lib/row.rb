@@ -33,8 +33,4 @@ class Row
       end
     end
   end
-
-  def contains_a_spot?
-    contents.any? {|element| element.is_a?(Spot)}
-  end
 end

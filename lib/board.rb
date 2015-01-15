@@ -36,7 +36,7 @@ class Board
   end
 
   def split_at_new_lines(text)
-    return text.split("\n")
+    text.split("\n")
   end
 
   def intake_each_row(array_of_numbers)
