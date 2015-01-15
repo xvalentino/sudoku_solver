@@ -49,4 +49,11 @@ class BoardTest < Minitest::Test
     @board.solve
     assert_equal 8, @board.state[0][0]
   end
+
+  def test_solves_whole_board
+    puzzple = File.read("./lib/eachrowboard.txt")
+    @board.intake(puzzple)
+    @board.solve
+    assert_equal File.read("./lib/board_1 copy.txt"), @board.solution
+  end
 end

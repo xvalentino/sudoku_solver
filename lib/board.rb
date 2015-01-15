@@ -30,7 +30,9 @@ class Board
   end
 
   def solve_using_rows
-    Row.new(row(1)).solve
+    (1..9).each do |number|
+      Row.new(row(number)).solve
+    end
   end
 
   def split_at_new_lines(text)
@@ -52,6 +54,13 @@ class Board
         row(row_number)[index] = Spot.new
       end
     end
+  end
+
+  def solution
+    solution = @state.flatten.map(&:to_s).inject('') do |pile, num|
+      pile + num
+    end
+    solution.scan(/.{1,9}/).join("\n") + "\n"
   end
 
 end
